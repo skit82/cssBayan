@@ -143,25 +143,28 @@ button,
 
 .container {
   width: 100%;
-  min-width: calc(100% - 5%);
+  max-width: calc(100% - 0%);
   margin: 0 auto;
   padding: 0 0.5em;
 }
 
 @media (min-width: 768px) {
   .container {
+    max-width: calc(100% - 0%);
     padding: 0 1.5em;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
+    max-width: calc(100% - 15%);
     padding: 0 2em;
   }
 }
 
-@media (max-width: 1920px) {
+@media (min-width: 1920px) {
   .container {
+    max-width: calc(100% - 20%);
     padding: 0 2.5em;
   }
 }
@@ -180,5 +183,96 @@ button,
   font-size: 1.75em;
   line-height: 2em;
   font-weight: 700;
+  margin: 0;
+  border-bottom: 0.15em solid #000000;
+}
 
+.accordion__caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*grid-column: 1/-1;*/
+  font-size: 0.7em;
+  font-weight: 500px;
+  line-height: 1.5em;
+  padding: 0.7em 0;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .accordion__caption {
+    font-size: 1.3em;
+    line-height: 1.8em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .accordion__caption {
+    font-size: 1.5em;
+    line-height: 2em;
+    padding: 1.4em 0;
+  }
+}
+
+@media (min-width: 1920px) {
+  .accordion__caption {
+    font-size: 1.8em;
+    line-height: 2.3em;
+  }
+}
+
+.accordion__item {
+  border-bottom: 0.1em solid #000000;
+}
+
+.accordion__box {
+  display: flex;
+  flex-direction: column;
+  /*display: grid;*/
+  /*grid-template-columns: 1fr 1fr;*/
+  /*align-items: center;*/
+  /*padding: 0.7em 0;*/
+}
+
+.accordion__icon {
+  /*grid-column: min-content;*/
+  display: inherit;
+}
+
+.accordion__icon svg {
+  fill: none;
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  flex-shrink: 0;
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+          transition: transform 0.5s ease-in-out;
+}
+
+.accordion__img {
+  margin: 0 auto;
+  padding-bottom: 0.6em;
+}
+
+.accordion__description {
+  /*grid-column: 1/5;*/
+  display: none;
+  max-height: 0;
+  transition: max-height 0.3s;
+  overflow: hidden;
+  /*padding-bottom: 1.2em;*/
+  /*transition: all 0.4s ease-out;*/
+}
+
+.accordion__input:checked ~ .accordion__description {
+  display: block;
+  max-height: 100%;
+  transition: all 0.4s ease-out;
+}
+
+.accordion__input:checked ~ .accordion__caption .accordion__icon svg {
+  transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+          transition: transform 0.5s ease-in-out;
 }
